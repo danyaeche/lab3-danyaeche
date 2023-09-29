@@ -1,0 +1,93 @@
+Dump of assembler code for function phase_5:
+=> 0x0000000000401125 <+0>:     push   %rbx
+   0x0000000000401126 <+1>:     sub    $0x10,%rsp
+   0x000000000040112a <+5>:     mov    %rdi,%rbx
+   0x000000000040112d <+8>:     callq  0x401371 <string_length>
+   0x0000000000401132 <+13>:    cmp    $0x6,%eax
+   0x0000000000401135 <+16>:    jne    0x40115b <phase_5+54>
+   0x0000000000401137 <+18>:    mov    $0x0,%eax
+   0x000000000040113c <+23>:    cmp    $0x5,%eax
+   0x000000000040113f <+26>:    jg     0x401162 <phase_5+61>
+   0x0000000000401141 <+28>:    movslq %eax,%rcx
+   0x0000000000401144 <+31>:    movzbl (%rbx,%rcx,1),%edx
+   0x0000000000401148 <+35>:    and    $0xf,%edx
+   0x000000000040114b <+38>:    movzbl 0x402610(%rdx),%edx
+   0x0000000000401152 <+45>:    mov    %dl,0x9(%rsp,%rcx,1)
+   0x0000000000401156 <+49>:    add    $0x1,%eax
+   0x0000000000401159 <+52>:    jmp    0x40113c <phase_5+23>
+   0x000000000040115b <+54>:    callq  0x4015d6 <explode_bomb>
+   0x0000000000401160 <+59>:    jmp    0x401137 <phase_5+18>
+   0x0000000000401162 <+61>:    movb   $0x0,0xf(%rsp)
+   0x0000000000401167 <+66>:    mov    $0x4025c6,%esi
+   0x000000000040116c <+71>:    lea    0x9(%rsp),%rdi
+   0x0000000000401171 <+76>:    callq  0x401385 <strings_not_equal>
+   0x0000000000401176 <+81>:    test   %eax,%eax
+   0x0000000000401178 <+83>:    jne    0x401180 <phase_5+91>
+   0x000000000040117a <+85>:    add    $0x10,%rsp
+   0x000000000040117e <+89>:    pop    %rbx
+   0x000000000040117f <+90>:    retq   
+   0x0000000000401180 <+91>:    callq  0x4015d6 <explode_bomb>
+   0x0000000000401185 <+96>:    jmp    0x40117a <phase_5+85>
+
+(gdb) i r
+rax            0x604d00 6311168
+rbx            0x7fffffffd0f8   140737488343288
+rcx            0x2      2
+rdx            0x604d00 6311168
+rsi            0x14     20
+rdi            0x604d00 6311168
+rbp            0x0      0x0
+rsp            0x7fffffffd008   0x7fffffffd008
+r8             0x4      4
+r9             0x0      0
+r10            0x2      2
+r11            0x246    582
+r12            0x400d50 4197712
+r13            0x7fffffffd0f0   140737488343280
+r14            0x0      0
+r15            0x0      0
+rip            0x401125 0x401125 <phase_5>
+eflags         0x202    [ IF ]
+cs             0x33     51
+ss             0x2b     43
+ds             0x0      0
+es             0x0      0
+fs             0x0      0
+gs             0x0      0
+
+Dump of assembler code for function strings_not_equal:
+   0x0000000000401385 <+0>:     push   %r12
+   0x0000000000401387 <+2>:     push   %rbp
+   0x0000000000401388 <+3>:     push   %rbx
+   0x0000000000401389 <+4>:     mov    %rdi,%rbx
+   0x000000000040138c <+7>:     mov    %rsi,%rbp
+   0x000000000040138f <+10>:    callq  0x401371 <string_length>
+   0x0000000000401394 <+15>:    mov    %eax,%r12d
+   0x0000000000401397 <+18>:    mov    %rbp,%rdi
+   0x000000000040139a <+21>:    callq  0x401371 <string_length>
+   0x000000000040139f <+26>:    cmp    %eax,%r12d
+   0x00000000004013a2 <+29>:    jne    0x4013c1 <strings_not_equal+60>
+   0x00000000004013a4 <+31>:    movzbl (%rbx),%eax
+   0x00000000004013a7 <+34>:    test   %al,%al
+   0x00000000004013a9 <+36>:    je     0x4013ba <strings_not_equal+53>
+   0x00000000004013ab <+38>:    cmp    %al,0x0(%rbp)
+   0x00000000004013ae <+41>:    jne    0x4013cb <strings_not_equal+70>
+   0x00000000004013b0 <+43>:    add    $0x1,%rbx
+   0x00000000004013b4 <+47>:    add    $0x1,%rbp
+   0x00000000004013b8 <+51>:    jmp    0x4013a4 <strings_not_equal+31>
+   0x00000000004013ba <+53>:    mov    $0x0,%eax
+   0x00000000004013bf <+58>:    jmp    0x4013c6 <strings_not_equal+65>
+   0x00000000004013c1 <+60>:    mov    $0x1,%eax
+   0x00000000004013c6 <+65>:    pop    %rbx
+   0x00000000004013c7 <+66>:    pop    %rbp
+   0x00000000004013c8 <+67>:    pop    %r12
+   0x00000000004013ca <+69>:    retq   
+   0x00000000004013cb <+70>:    mov    $0x1,%eax
+   0x00000000004013d0 <+75>:    jmp    0x4013c6 <strings_not_equal+65>
+End of assembler dump.
+
+(gdb) x/16cb 0x402610
+0x402610 <array.3413>:  109 'm' 97 'a'  100 'd' 117 'u' 105 'i' 101 'e' 114 'r' 115 's'
+0x402618 <array.3413+8>:        110 'n' 102 'f' 111 'o' 116 't' 118 'v' 98 'b'  121 'y' 108 'l'
+(gdb) x/s 0x4025c6
+0x4025c6:       "flyers"

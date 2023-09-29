@@ -1,0 +1,52 @@
+Dump of assembler code for function phase_4:
+=> 0x00000000004010c8 <+0>:     sub    $0x18,%rsp
+   0x00000000004010cc <+4>:     lea    0x8(%rsp),%rcx
+   0x00000000004010d1 <+9>:     lea    0xc(%rsp),%rdx
+   0x00000000004010d6 <+14>:    mov    $0x40286d,%esi
+   0x00000000004010db <+19>:    mov    $0x0,%eax
+   0x00000000004010e0 <+24>:    callq  0x400cb0 <__isoc99_sscanf@plt>
+   0x00000000004010e5 <+29>:    cmp    $0x2,%eax
+   0x00000000004010e8 <+32>:    jne    0x4010f7 <phase_4+47>
+   0x00000000004010ea <+34>:    mov    0xc(%rsp),%eax
+   0x00000000004010ee <+38>:    test   %eax,%eax
+   0x00000000004010f0 <+40>:    js     0x4010f7 <phase_4+47>
+   0x00000000004010f2 <+42>:    cmp    $0xe,%eax
+   0x00000000004010f5 <+45>:    jle    0x4010fc <phase_4+52>
+   0x00000000004010f7 <+47>:    callq  0x4015d6 <explode_bomb>
+   0x00000000004010fc <+52>:    mov    $0xe,%edx
+   0x0000000000401101 <+57>:    mov    $0x0,%esi
+   0x0000000000401106 <+62>:    mov    0xc(%rsp),%edi
+   0x000000000040110a <+66>:    callq  0x40108b <func4>
+   0x000000000040110f <+71>:    cmp    $0x6,%eax
+   0x0000000000401112 <+74>:    jne    0x40111b <phase_4+83>
+   0x0000000000401114 <+76>:    cmpl   $0x6,0x8(%rsp)
+   0x0000000000401119 <+81>:    je     0x401120 <phase_4+88>
+   0x000000000040111b <+83>:    callq  0x4015d6 <explode_bomb>
+   0x0000000000401120 <+88>:    add    $0x18,%rsp
+   0x0000000000401124 <+92>:    retq   
+End of assembler dump.
+
+Dump of assembler code for function func4:
+   0x000000000040108b <+0>:     sub    $0x8,%rsp
+   0x000000000040108f <+4>:     mov    %edx,%ecx
+   0x0000000000401091 <+6>:     sub    %esi,%ecx
+   0x0000000000401093 <+8>:     mov    %ecx,%eax
+   0x0000000000401095 <+10>:    shr    $0x1f,%eax
+   0x0000000000401098 <+13>:    add    %ecx,%eax
+   0x000000000040109a <+15>:    sar    %eax
+   0x000000000040109c <+17>:    add    %esi,%eax
+   0x000000000040109e <+19>:    cmp    %edi,%eax
+   0x00000000004010a0 <+21>:    jg     0x4010ae <func4+35>
+   0x00000000004010a2 <+23>:    jl     0x4010ba <func4+47>
+   0x00000000004010a4 <+25>:    mov    $0x0,%eax
+   0x00000000004010a9 <+30>:    add    $0x8,%rsp
+   0x00000000004010ad <+34>:    retq   
+   0x00000000004010ae <+35>:    lea    -0x1(%rax),%edx
+   0x00000000004010b1 <+38>:    callq  0x40108b <func4>
+   0x00000000004010b6 <+43>:    add    %eax,%eax
+   0x00000000004010b8 <+45>:    jmp    0x4010a9 <func4+30>
+   0x00000000004010ba <+47>:    lea    0x1(%rax),%esi
+   0x00000000004010bd <+50>:    callq  0x40108b <func4>
+   0x00000000004010c2 <+55>:    lea    0x1(%rax,%rax,1),%eax
+   0x00000000004010c6 <+59>:    jmp    0x4010a9 <func4+30>
+End of assembler dump.
